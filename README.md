@@ -1,5 +1,5 @@
 ## Dom Selector
-### Version: 1.0.0
+### Version: 1.0.1
 Get `NodeName`, `classList`, and `id` of elements without opening Console.
 Dependent on [jScript](https://github.com/shivamdevs/jScript) Library.
 ### Usage
