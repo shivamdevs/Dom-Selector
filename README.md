@@ -1,2 +1,15 @@
-# Dom-Selector
-Shows NodeName, classList and id of element when hovered. Desktop only. 
+## Dom Selector
+### Version: 1.0.0
+Get `NodeName`, `classList`, and `id` of elements without opening Console.
+Dependent on [jScript](https://github.com/shivamdevs/jScript) Library.
+### Usage
+```html
+<!-- Use Development CDN -->
+<script src="https://cdn.jsdelivr.net/gh/shivamdevs/dom-selector@1.0.0/selector.js" defer></script>
+<!-- or Use Production CDN -->
+<script src="https://cdn.jsdelivr.net/gh/shivamdevs/dom-selector@1.0.0/selector.min.js" defer></script>
+```
+> Adding `defer` can help delay **Dom-Selector** loading, preventing it from increasing page load time.
+### Contribution
+* @Shivamdevs
+* @shivamdewangan
