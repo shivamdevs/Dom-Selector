@@ -1,18 +1,27 @@
-## Dom Selector
-### Version: 1.0.1
+# Dom Selector
+
+## Version: 1.1.0
+
 Get `NodeName`, `classList`, and `id` of elements without opening Console.
 Dependent on [jScript](https://github.com/shivamdevs/jScript) Library.
-### Usage
+
+## Usage
+
 ```html
 <!-- Use Development CDN -->
 <script src="https://cdn.jsdelivr.net/gh/shivamdevs/dom-selector/selector.js" defer></script>
 <!-- or Use Production CDN -->
 <script src="https://cdn.jsdelivr.net/gh/shivamdevs/dom-selector/selector.min.js" defer></script>
 ```
+
 > Adding `defer` can help delay **Dom-Selector** loading, preventing it from increasing page load time.
-### Limitation
+
+## Limitation
+
 * Restricted to top window only
 * jScript Library dependency
-### Contribution
+
+## Contribution
+
 * [@Shivamdevs](https://github.com/shivamdevs)
 * [@shivamdewangan](https://github.com/shivamdewangan)
