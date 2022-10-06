@@ -9,9 +9,9 @@ Dependent on [jScript](https://github.com/shivamdevs/jScript) Library.
 
 ```html
 <!-- Use Development CDN -->
-<script src="https://cdn.jsdelivr.net/gh/shivamdevs/dom-selector/selector.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/shivamdevs/dom-selector@latest/selector.js" defer></script>
 <!-- or Use Production CDN -->
-<script src="https://cdn.jsdelivr.net/gh/shivamdevs/dom-selector/selector.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/shivamdevs/dom-selector@latest/selector.min.js" defer></script>
 ```
 
 > Adding `defer` can help delay **Dom-Selector** loading, preventing it from increasing page load time.
