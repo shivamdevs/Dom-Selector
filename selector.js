@@ -1,7 +1,7 @@
 /*
     Package: Dom-Selector
-    Version: 1.0.1
-    Author: Shivam Dewangan [https://github.com/Shivamdevs]
+    Version: 1.1.0
+    Author: Shivam Dewangan https://github.com/shivamdevs
     License: MIT License
 */
 
@@ -43,7 +43,6 @@
             dta = selector.find('data-selector')[0].getBoundingClientRect();
             if ((dta.top - 6) < 0) selector.find('data-selector').addClass('lowset');
             dta = selector.find('data-selector')[0].getBoundingClientRect();
-            console.log((dta.top + dta.height + 15) > window.innerHeight);
             if ((dta.top + dta.height + 15) > window.innerHeight) selector.find('data-selector').addClass('stcset');
         }).mousedown(function (eve) {
             if (selector.hasClass('hidden')) return;
