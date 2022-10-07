@@ -2,8 +2,7 @@
 
 ## Version: 1.1.0
 
-Get `NodeName`, `classList`, and `id` of elements without opening Console.
-Dependent on [jScript](https://github.com/shivamdevs/jScript) Library.
+Get `NodeName`, `classList`, and `id` alongwith `width`, `height`, `display`, `padding`, `margin` and `border` of elements without opening Console.
 
 ## Usage
 
@@ -19,7 +18,6 @@ Dependent on [jScript](https://github.com/shivamdevs/jScript) Library.
 ## Limitation
 
 * Restricted to top window only
-* jScript Library dependency
 * Can't distinguish between before and after pseudo-elements
 
 ## Contribution
