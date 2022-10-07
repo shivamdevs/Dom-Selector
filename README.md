@@ -20,6 +20,7 @@ Dependent on [jScript](https://github.com/shivamdevs/jScript) Library.
 
 * Restricted to top window only
 * jScript Library dependency
+* Can't distinguish between before and after pseudo-elements
 
 ## Contribution
 
