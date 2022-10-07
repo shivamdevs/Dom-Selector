@@ -4,7 +4,9 @@
 
 Get `NodeName`, `classList`, and `id` alongwith `width`, `height`, `display`, `padding`, `margin` and `border` of elements without opening Console.
 
-## Usage
+## Installation
+
+**Dom Selector** can be loaded to any websites by placing any one of these codes on the `head` of the document.
 
 ```html
 <!-- Use Development CDN -->
@@ -14,6 +16,43 @@ Get `NodeName`, `classList`, and `id` alongwith `width`, `height`, `display`, `p
 ```
 
 > Adding `defer` can help delay **Dom-Selector** loading, preventing it from increasing page load time.
+
+## Usage
+
+### Implementation
+
+`DomSelector` can be called as a `Promise`.
+
+```javascript
+// Call Dom-Selector
+DomSelector(); // returns Promise
+
+// Or use top level async await function
+async function selector() {
+    const element = await DomSelector();
+}
+
+// Optionally it takes only one boolean parameter
+DomSelector(true); //This keeps the selection on the page until user closes it.
+```
+
+> Name of the function `DomSelector` can be changed on the script file on local downloaded files.
+
+### Options
+
+An optional `boolean` parameter `showPreview` can be passed to keep selection in view until user closes it.
+
+```javascript
+DomSelector(showPreview); // boolean value true|false
+```
+
+### Auto Select
+
+An `autoSelect` function can be called to show a start icon on the document by default.
+
+```javascript
+DomSelector.autoSelect(showPreview); // returns :void
+```
 
 ## Limitation
 
