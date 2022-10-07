@@ -2,21 +2,43 @@
     Package: Dom-Selector
     Version: 2.0.0
     Author: Shivam Dewangan https://github.com/shivamdevs
+    Repository: https://github.com/shivamdevs/dom-selector
     License: MIT License
 */
 
-(function (context, name, enableSelector) {
+(function (context, name) {
     const style = document.createElement("style");
     style.setAttribute("DomSelector", "");
     style.setAttribute("type", "text/css");
     style.innerHTML = `
         dom-selector,
+        dom-selector-auto,
         dom-selector * {
             box-sizing: border-box;
             display: block;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+        dom-selector-auto {
+            position: fixed;
+            inset: auto 0 20px auto;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 20px 0 0 20px;
+            box-shadow: -2px 2px 4px 2px #0002;
+            border: 1px solid #0004;
+            border-right: none;
+            z-index: 999999999999999998;
+            transition: all .2s ease;
+            cursor: pointer;
+            color: #000;
+        }
+        dom-selector-auto:hover {
+            color: #ff8c00;
+        }
+        dom-selector-auto.auto {
+            translate: calc(100% + 10px) 0;
         }
         dom-selector {
             z-index: 999999999999999999;
@@ -192,16 +214,16 @@
     wrap.appendChild(data);
     document.body.appendChild(wrap);
 
-    window.addEventListener('mouseover', function(e) {
+    context.addEventListener('mouseover', function(e) {
         if (wrap.classList.contains('inactive') || wrap.classList.contains('selected')) return;
         wrap.classList.add('surfing');
     });
-    window.addEventListener('mouseout', function (e) {
+    context.addEventListener('mouseout', function (e) {
         if (wrap.classList.contains('inactive') || wrap.classList.contains('selected')) return;
         wrap.classList.remove('surfing');
     });
-    window.addEventListener('mousemove', mapE);
-    window.addEventListener('scroll', mapE);
+    context.addEventListener('mousemove', mapE);
+    context.addEventListener('scroll', mapE);
 
     const history = {x:0,y:0};
 
@@ -214,7 +236,7 @@
         const element = document.elementFromPoint(e.clientX, e.clientY);
         if (!element) return;
         const rect = element.getBoundingClientRect();
-        const style = window.getComputedStyle(element);
+        const style = context.getComputedStyle(element);
         setStyle(element);
 
         info.innerHTML = `<span node>${element.nodeName.toLowerCase()}</span>`;
@@ -232,7 +254,7 @@
 
     function setStyle(node) {
         const rect = node.getBoundingClientRect();
-        const style = window.getComputedStyle(node);
+        const style = context.getComputedStyle(node);
         wrap.style.top = rect.top + 'px';
         wrap.style.left = rect.left + 'px';
         wrap.style.width = rect.width + 'px';
@@ -283,9 +305,10 @@
 
     context[name] = function (showPreview = false) {
         return new Promise((resolve, reject) => {
-            if (!wrap.classList.contains('inactive') || wrap.classList.contains('selected')) reject('Error: Another instance of \'DomSelector\' is already running. Finish it before starting another one.');
+            if (!wrap.classList.contains('inactive') && !wrap.classList.contains('selected')) reject('Error: Another instance of \'DomSelector\' is already running. Finish it before starting another one.');
+            if (wrap.classList.contains('selected')) reset();
             wrap.classList.remove('inactive');
-            window.addEventListener('mousedown', function (e) {
+            context.addEventListener('mousedown', function (e) {
                 if (wrap.classList.contains('inactive')) reject('Error: Another instance of \'DomSelector\' is already running. Finish it before starting another one.');
                 if (showPreview) wrap.classList.add('selected');
                 wrap.classList.remove('surfing');
@@ -295,4 +318,17 @@
             }, {once: true});
         });
     };
-}(window, 'DomSelector', true));
+    let autoSelect = false;
+    context[name].autoSelect = function (showPreview = false) {
+        if (autoSelect) throw new Error('Error: AutoSelect is already enabled.');
+        autoSelect = true;
+
+        const auto = document.createElement('dom-selector-auto');
+        auto.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" fill="currentColor" height="20"><path xmlns="http://www.w3.org/2000/svg" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM288 176c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 48.8 46.5 111.6 68.6 138.6c6 7.3 16.8 7.3 22.7 0c22.1-27 68.6-89.8 68.6-138.6zm-48 0c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"></path></svg>`;
+        document.body.appendChild(auto);
+        auto.addEventListener('click', function(e) {
+            this.classList.add('auto');
+            context[name](showPreview).then((el) => { console.log(el); }).finally(() => { auto.classList.remove('auto') });
+        });
+    };
+}(window, 'DomSelector'));
