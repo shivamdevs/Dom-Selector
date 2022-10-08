@@ -2,7 +2,7 @@
 
 ## Version: 1.1.0
 
-Get `NodeName`, `classList`, and `id` alongwith `width`, `height`, `display`, `padding`, `margin` and `border` of elements without opening Console.
+Get `NodeName`, `classList`, and `id` along with `width`, `height`, `display`, `padding`, `margin` and `border` of elements without opening Console.
 
 ## Installation
 
